@@ -20,6 +20,7 @@ bird_rect = bird.get_rect(center=(Config.window_width / 2, Config.window_height 
 
 floor = pygame.image.load("assets/base.png")
 floor_rect = floor.get_rect(bottomleft=(0, Config.window_height))
+floor_rect2 = floor.get_rect(bottomleft=(Config.window_width, Config.window_height))
 
 while 1:
     for event in pygame.event.get():
@@ -27,9 +28,11 @@ while 1:
             sys.exit()
 
     floor_rect = floor_rect.move(Config.scroll_speed, 0)
+    floor_rect2 = floor_rect2.move(Config.scroll_speed, 0)
 
     screen.blit(background, background_rect)
     screen.blit(bird, bird_rect)
     screen.blit(floor, floor_rect)
+    screen.blit(floor, floor_rect2)
     pygame.display.flip()
     clock.tick(60)
