@@ -22,6 +22,9 @@ floor = pygame.image.load("assets/base.png")
 floor1_rect = floor.get_rect(bottomleft=(0, Config.window_height))
 floor2_rect = floor.get_rect(bottomleft=(floor.get_width(), Config.window_height))
 
+pipe = pygame.image.load("assets/pipe-green.png")
+pipe_rect = pipe.get_rect(topleft=(250, 300))
+
 
 def move_floor(floor_rect):
     floor_rect = floor_rect.move(Config.scroll_delta, 0)
@@ -37,10 +40,13 @@ while 1:
 
     floor1_rect = move_floor(floor1_rect)
     floor2_rect = move_floor(floor2_rect)
-
+    pipe_rect = pipe_rect.move(Config.scroll_delta, 0)
     screen.blit(background, background_rect)
     screen.blit(bird, bird_rect)
+    screen.blit(pipe, pipe_rect)
     screen.blit(floor, floor1_rect)
     screen.blit(floor, floor2_rect)
+
+
     pygame.display.flip()
     clock.tick(300)
